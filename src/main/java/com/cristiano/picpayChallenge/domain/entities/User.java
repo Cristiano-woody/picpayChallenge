@@ -1,10 +1,8 @@
 package com.cristiano.picpayChallenge.domain.entities;
 
+import com.cristiano.picpayChallenge.domain.services.dtos.UserDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -14,6 +12,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class User {
 
@@ -27,6 +26,9 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(unique = true)
     private String document;
 
@@ -39,4 +41,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
+    public String getFullName() {
+        return String.format("%s %s", firstName, lastName);
+    }
+
+    public UserDto toDto() {
+        return new UserDto(id, firstName, lastName, document, email, balance);
+    }
 }
