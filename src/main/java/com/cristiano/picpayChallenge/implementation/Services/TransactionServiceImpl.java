@@ -11,7 +11,7 @@ import com.cristiano.picpayChallenge.domain.services.UserService;
 import com.cristiano.picpayChallenge.domain.services.dtos.CreateTransactionDto;
 import com.cristiano.picpayChallenge.implementation.Services.protocols.AuthorizeTransaction;
 import com.cristiano.picpayChallenge.implementation.Services.protocols.NotificationSender;
-import com.cristiano.picpayChallenge.infrastructure.repositories.TransactionRepository;
+import com.cristiano.picpayChallenge.implementation.Services.protocols.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

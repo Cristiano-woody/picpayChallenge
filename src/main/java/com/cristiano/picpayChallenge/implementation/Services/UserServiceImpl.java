@@ -7,7 +7,7 @@ import com.cristiano.picpayChallenge.domain.exceptions.ResourceNotFound;
 import com.cristiano.picpayChallenge.domain.services.UserService;
 import com.cristiano.picpayChallenge.domain.services.dtos.CreateUserRequestDto;
 import com.cristiano.picpayChallenge.domain.services.dtos.UserDto;
-import com.cristiano.picpayChallenge.infrastructure.repositories.UserRepository;
+import com.cristiano.picpayChallenge.implementation.Services.protocols.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,14 +57,7 @@ public class UserServiceImpl implements UserService {
 
         this.userRepository.save(newUser);
 
-        return new UserDto(
-                newUser.getId(),
-                newUser.getFirstName(),
-                newUser.getLastName(),
-                newUser.getDocument(),
-                newUser.getEmail(),
-                newUser.getBalance()
-        );
+        return newUser.toDto();
     }
 
     @Override
